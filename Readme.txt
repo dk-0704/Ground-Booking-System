@@ -1,0 +1,1 @@
+Run this code by typing "python manage.py runserver" in the terminal to access our website
