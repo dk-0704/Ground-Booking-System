@@ -1,0 +1,118 @@
+{% load static %}
+{% include 'customer_header.html' %}
+<div class="container">
+    <div class="site-section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-12 col-lg-7 mb-5">
+             <center><h3>Ground Booking</h3></center>
+
+          <form method= "post" action="" class="contact-form">
+              {% csrf_token %}
+
+
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label class="font-weight-bold" for="ground">Ground Id</label>
+                <input type="number" name="ground" id="ground" class="form-control" value="{{id}}" placeholder="Enter ground">
+              </div>
+            </div>
+
+
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label class="font-weight-bold" for="customer">Customer Id</label>
+                <input type="number" name="customer" id="customer" value="{{customer}}" class="form-control" placeholder=" enter customer">
+              </div>
+            </div>
+
+              <div class="row form-group">
+              <div class="col-md-12">
+                <label class="font-weight-bold" for="date">date</label>
+                <input type="date" name="date" id="date"  class="form-control" placeholder=" enter date">
+                  <span class="text text-danger">{{msg1}}</span>
+              </div>
+            </div>
+              <div class="row form-group">
+              <div class="col-md-12">
+                <label class="font-weight-bold" for="time">time</label>
+                <input type="time" name="time" id="time"  class="form-control" placeholder=" enter time">
+                  <span class="text text-danger">{{msg2}}</span>
+              </div>
+            </div>
+
+              <div class="row form-group">
+              <div class="col-md-12">
+                  <label class="font-weight-bold" for="address">Address</label>
+                  <textarea name="address" class="form-control" id="address">{{ground}} </textarea>
+              </div>
+              </div>
+
+              <div class="row form-group">
+              <div class="col-md-12">
+                  <label class="font-weight-bold" for="description">Description</label>
+                  <textarea name="description" class="form-control" id="description"></textarea>
+              </div>
+              </div>
+
+            <div class="row form-group">
+              <div class="col-md-12">
+                  <label class="font-weight-bold" for="cost"> Ground Fee</label>
+                  <input type="number" name="cost" class="form-control" onkeyup="multiplyBy()" value="{{cost}}" id="cost" readonly>
+              </div>
+              </div>
+
+            <div class="row form-group">
+              <div class="col-md-12">
+                  <label class="font-weight-bold" for="hours">no of hours</label>
+                  <input type="number" name="hours" class="form-control" onkeyup="multiplyBy()" id="hours">
+              </div>
+              </div>
+
+            <div class="row form-group">
+              <div class="col-md-12">
+                  <label class="font-weight-bold" for="final_cost">Final Cost</label>
+                  <input type="number" name="final_cost" class="form-control" id="final_cost">
+              </div>
+              </div>
+
+
+
+            <div class="row form-group">
+              <div class="col-md-12">
+                <input type="submit" value="Book" class="btn btn-primary py-2 px-4">
+              </div>
+            </div>
+
+
+          </form>
+            {{msg}}
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+</div>
+
+<script>
+
+    function multiplyBy()
+{
+num1 = document.getElementById("cost").value;
+num2 = document.getElementById("hours").value;
+document.getElementById("final_cost").value = num1 * num2;
+}
+</script>
+
+<script>
+    var today = new Date().toISOString().split('T')[0];
+document.getElementsByName("date")[0].setAttribute('min', today);
+</script>
+<script>
+    var today = new Time().toISOString().split('T')[0];
+document.getElementsByName("time")[0].setAttribute('min', today);
+</script>
+
+{% include 'customer_footer.html' %}

@@ -1,0 +1,29 @@
+{% include 'customer_header.html' %}
+
+
+                        <center><h3>My Details</h3></center>
+
+    <table cellspacing="10" border="1" width="100%">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Fullname</th>
+    <th>email</th>
+    <th>mobile</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>{{customer.id}}</td>
+    <td>{{customer.fullname}}</td>
+    <td>{{customer.email}}</td>
+    <td>{{customer.phone}}</td>
+     <td><a href="/customer_edit/{{customer.email}}">Edit</a> </td>
+    <td><a href="/customer_delete/{{customer.email}}">Delete</a> </td>
+  </tr>
+  </tbody>
+</table>
+    <br>
+
+{% include 'customer_footer.html' %}

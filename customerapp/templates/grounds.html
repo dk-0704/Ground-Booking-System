@@ -1,0 +1,32 @@
+{% load static %}
+{% include 'customer_header.html' %}
+
+
+
+    <table cellspacing="10" border="1" width="100%">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Owner email</th>
+    <th>ground_type</th>
+    <th>ground_address</th>
+    <th>ground_images</th>
+    <th>timings</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for view in views %}
+  <tr>
+    <td>{{view.id}}</td>
+    <td>{{view.owner.id}}</td>
+    <td>{{view.ground_type}}</td>
+    <td>{{view.address}}</td>
+    <td><img src="{{view.ground_images.url}}" height="100px" width="200px" img_responsive/></td>
+    <td>{{view.timings}}</td>
+     <td><a href="/ground_booking/{{view.id}}">book</a> </td>
+
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% include 'customer_footer.html' %}

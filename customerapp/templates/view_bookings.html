@@ -1,0 +1,44 @@
+{% load static %}
+{% include 'customer_header.html' %}
+<br>
+
+
+
+    <table cellspacing="15" cellpadding="10" border="1" width="100%">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Ground Id</th>
+    <th>Customer Id</th>
+    <th>date</th>
+    <th>time</th>
+    <th>address</th>
+    <th>description</th>
+    <th>status</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for book in booked %}
+  <tr>
+    <td>{{book.id}}</td>
+    <td>{{book.ground.id}}</td>
+    <td>{{book.customer.id}}</td>
+    <td>{{book.date}}</td>
+    <td>{{book.time}}</td>
+    <td>{{book.address}}</td>
+    <td>{{book.description}}</td>
+     <td>{% if book.status == 1 %}
+                                    <span class="alert alert-success">Approved</span>
+                                {% elif book.status == 2 %}
+                                    <span class="alert alert-danger">Rejected</span>
+                                {% else %}
+                                    <span class="alert alert-info">Pending</span>
+                                {% endif %}
+                           </td>
+
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<br>
+{% include 'customer_footer.html' %}

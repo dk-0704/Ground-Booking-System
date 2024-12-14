@@ -1,0 +1,81 @@
+{% load static %}
+{% include 'owner_header.html' %}
+<div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="hero-wrap text-center" style="background-image: url('{% static 'images/hero_2.jpg' %}');" data-stellar-background-ratio="0.5">
+            <div class="hero-contents">
+              <h2>Update  Ground details</h2>
+              <p><a href="{% url 'owner_home' %}">Home</a> <span class="mx-2">/</span> <strong>Owner</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-12 col-lg-7 mb-5">
+
+
+
+          <form method="post" action="/ground_update/" class="contact-form" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="row form-group">
+              <div class="col-md-12 mb-3 mb-md-0">
+                <label class="font-weight-bold" for="id">Ground ID</label>
+                <input type="number" id="id" name="id" value="{{user.id}}"  class="form-control" placeholder="id" readonly>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-md-12 mb-3 mb-md-0">
+                <label class="font-weight-bold" for="owner id">Ground Owner ID</label>
+                <input type="email" id="owner id" name="owner" value="{{id}}"  class="form-control" placeholder="id" readonly>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-md-12 mb-3 mb-md-0">
+                <label class="font-weight-bold" for="ground_type">Ground Type</label>
+                <input type="text" id="ground_type" name="ground_type" value="{{user.ground_type}}"  class="form-control" placeholder="Ground Type">
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-md-12 mb-3 mb-md-0">
+                <label class="font-weight-bold" for="address">Ground address</label>
+                <textarea  name="address"  id="address" rows="3" class="form-control">{{user.address}}</textarea>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-md-12 mb-3 mb-md-0">
+                <label class="font-weight-bold" for="image">Ground image</label>
+                <input type="file" name="ground_images"  id="image" value="{{user.ground_images}}" class="form-control">
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-md-12 mb-3 mb-md-0">
+                <label class="font-weight-bold" for="timing">Ground timings</label>
+                <input type="text" name="timings" value="{{user.timings}}" id="timing" class="form-control">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-12">
+                <input type="submit" value="update Ground" class="btn btn-primary py-2 px-4">
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+      </div></div>
+    </div>
+{{msg}}
+
+{% include 'owner_footer.html' %}

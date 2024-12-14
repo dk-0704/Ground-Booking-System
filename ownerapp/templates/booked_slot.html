@@ -1,0 +1,43 @@
+{% load static %}
+{% include 'owner_header.html' %}
+
+<br>
+
+    <table cellspacing="10" cellpadding="10" border="1" width="100%">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Ground Id</th>
+    <th>Customer Id</th>
+    <th>date</th>
+    <th>time</th>
+    <th>address</th>
+    <th>description</th>
+    <th>status</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for customer in customer %}
+  <tr>
+    <td>{{customer.id}}</td>
+    <td>{{customer.ground.id}}</td>
+    <td>{{customer.customer.id}}</td>
+    <td>{{customer.date}}</td>
+    <td>{{customer.time}}</td>
+    <td>{{customer.address}}</td>
+    <td>{{customer.description}}</td>
+    <td>{% if customer.status == 0 %}
+                                <a href="{% url 'booking_approve' book_id=customer.id %}" class="btn btn-success" >Approve</a>
+                                <a class="btn btn-danger" href="{% url 'booking_reject' book_id=customer.id %}" >Reject</a>
+                                {% elif customer.status == 1  %}
+                                 <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Approved</button>
+                                {% else %}
+                                <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Rejected</button>
+                                {% endif %}</td>
+
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<br>
+{% include 'owner_footer.html' %}

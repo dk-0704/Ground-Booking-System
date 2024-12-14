@@ -1,0 +1,32 @@
+{% load static %}
+{% include 'owner_header.html' %}
+   <center><h3>My Details</h3></center>
+
+    <table cellspacing="10" border="1" width="100%">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Fullname</th>
+    <th>email</th>
+    <th>mobile</th>
+    <th>Ground Type</th>
+    <th>Ground Image</th>
+    <th>Timings</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>{{owner.id}}</td>
+    <td>{{owner.fullname}}</td>
+    <td>{{owner.email}}</td>
+    <td>{{owner.phone}}</td>
+    <td>{{owner.ground_type}}</td>
+    <td><img src="{{owner.ground_image.url}}" height="100px" width="200px" img_responsive/></td>
+    <td>{{owner.timings}}</td>
+     <td><a href="/owner_edit/{{owner.email}}">Edit</a> </td>
+    <td><a href="/owner_delete/{{owner.email}}">Delete</a> </td>
+  </tr>
+  </tbody>
+</table>
+    <br>{% include 'owner_footer.html' %}
